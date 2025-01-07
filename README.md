@@ -11,18 +11,27 @@ minimarket-js
 ├── backend
 │   ├── src
 │   │   ├── controllers
+│   │   │   ├── ControladorInventario.js
+│   │   │   └── ControladorVentas.js
 │   │   ├── models
+│   │   │   ├── Inventario.js
+│   │   │   ├── Producto.js
+│   │   │   ├── Venta.js
+│   │   │   └── Cliente.js
 │   │   ├── services
+│   │   │   ├── ServicioInventario.js
+│   │   │   └── ServicioVentas.js
 │   │   └── index.js
 │   └── package.json
 └── frontend
     ├── src
     │   ├── components
-    │   │   └── Navbar.js
     │   ├── pages
     │   │   ├── Dashboard.js
     │   │   ├── Inventory.js
-    │   │   └── Sales.js
+    │   │   ├── Sales.js
+    │   │   ├── MainLayout.js
+    │   │   └── Navbar.js
     │   ├── services
     │   │   └── api.js
     │   └── App.js
@@ -33,7 +42,8 @@ minimarket-js
 
 - **Inventory Management**: Add, remove, and view items in the inventory.
 - **Sales Processing**: Create and retrieve sales records.
-- **Product Management**: Add, remove, and list products.
+- **Dashboard**: View key metrics and statistics.
+- **Responsive Design**: Modern and responsive UI using Material-UI.
 
 ## Installation
 
