@@ -8,24 +8,25 @@ Minimarket JS is a simple JavaScript application designed to manage a mini-marke
 
 ```
 minimarket-js
-├── src
-│   ├── index.js
-│   ├── controllers
-│   │   ├── inventory.js
-│   │   ├── sales.js
-│   │   └── products.js
-│   ├── models
-│   │   ├── Product.js
-│   │   ├── Sale.js
-│   │   └── Inventory.js
-│   ├── services
-│   │   ├── inventoryService.js
-│   │   └── salesService.js
-│   └── utils
-│       ├── validation.js
-│       └── helpers.js
-├── package.json
-└── README.md
+├── backend
+│   ├── src
+│   │   ├── controllers
+│   │   ├── models
+│   │   ├── services
+│   │   └── index.js
+│   └── package.json
+└── frontend
+    ├── src
+    │   ├── components
+    │   │   └── Navbar.js
+    │   ├── pages
+    │   │   ├── Dashboard.js
+    │   │   ├── Inventory.js
+    │   │   └── Sales.js
+    │   ├── services
+    │   │   └── api.js
+    │   └── App.js
+    └── package.json
 ```
 
 ## Features
