@@ -1,0 +1,23 @@
+{
+  "name": "minimarket-js",
+  "version": "1.0.0",
+  "description": "A simple minimarket application built with JavaScript.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "keywords": [
+    "minimarket",
+    "javascript",
+    "nodejs",
+    "express"
+  ],
+  "author": "Your Name",
+  "license": "ISC"
+}
