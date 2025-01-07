@@ -1,27 +1,33 @@
-import Inventario from '../models/Inventario';
+import Inventario from '../models/Inventario.js';
 
-const inventario = new Inventario();
+class ServicioInventario {
+    constructor() {
+        this.inventario = new Inventario();
+    }
 
-export const agregarProductoAlInventario = (producto) => {
-    inventario.addItem(producto);
-};
+    agregarProductoAlInventario(producto) {
+        this.inventario.addItem(producto);
+    }
 
-export const eliminarProductoDelInventario = (productoId) => {
-    inventario.removeItem(productoId);
-};
+    eliminarProductoDelInventario(productoId) {
+        this.inventario.removeItem(productoId);
+    }
 
-export const actualizarProductoEnInventario = (productoId, productoActualizado) => {
-    inventario.updateProduct(productoId, productoActualizado);
-};
+    actualizarProductoEnInventario(productoActualizado) {
+        this.inventario.updateProduct(productoActualizado);
+    }
 
-export const obtenerInventario = () => {
-    return inventario.getInventario();
-};
+    obtenerInventario() {
+        return this.inventario.getInventario();
+    }
 
-export const buscarProductoPorId = (productoId) => {
-    return inventario.getProductById(productoId);
-};
+    buscarProductoPorId(productoId) {
+        return this.inventario.getProductById(productoId);
+    }
 
-export const listarProductosPorCategoria = (categoria) => {
-    return inventario.getProductsByCategory(categoria);
-};
+    listarProductosPorCategoria(categoria) {
+        return this.inventario.getProductsByCategory(categoria);
+    }
+}
+
+export default ServicioInventario;

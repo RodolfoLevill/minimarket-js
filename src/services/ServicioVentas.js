@@ -1,6 +1,5 @@
-import Venta from '../models/Venta';
-import Inventario from '../models/Inventario';
-import { validarCantidad } from '../utils/validacion';
+import Venta from '../models/Venta.js';
+import Inventario from '../models/Inventario.js';
 
 class ServicioVentas {
     constructor() {
@@ -9,9 +8,6 @@ class ServicioVentas {
     }
 
     procesarVenta(idProducto, cantidad) {
-        // Validar entradas
-        validarCantidad(cantidad);
-        
         const producto = this.inventario.getProductById(idProducto);
         if (!producto) {
             throw new Error('Producto no encontrado');
@@ -30,8 +26,7 @@ class ServicioVentas {
             fecha: new Date()
         });
 
-        // Actualizar inventario
-        this.inventario.updateStock(idProducto, -cantidad);
+        this.inventario.updateProduct({ ...producto, cantidad: producto.cantidad - cantidad });
         this.ventas.push(venta);
 
         return venta;
@@ -64,13 +59,12 @@ class ServicioVentas {
         }
 
         const venta = this.ventas[indiceVenta];
-        // Restaurar inventario
-        this.inventario.actualizarStock(venta.idProducto, venta.cantidad);
-        
-        // Eliminar venta
+        const producto = this.inventario.getProductById(venta.idProducto);
+        this.inventario.updateProduct({ ...producto, cantidad: producto.cantidad + venta.cantidad });
+
         this.ventas.splice(indiceVenta, 1);
         return true;
     }
 }
 
-export default new ServicioVentas();
+export default ServicioVentas;

@@ -29,13 +29,6 @@ class Inventario {
             this.productos[index] = productoActualizado;
         }
     }
-
-    updateStock(productoId, nuevoStock) {
-        const producto = this.getProductById(productoId);
-        if (producto) {
-            producto.stock = nuevoStock;
-        }
-    }
 }
 
 export default Inventario;

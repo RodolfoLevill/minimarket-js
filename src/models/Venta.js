@@ -1,4 +1,4 @@
-import Cliente from './Cliente';
+import Cliente from './Cliente.js';
 
 class Venta {
     constructor(id, productoId, cantidad, precio_final, tipo_pago, descuentoEfectivo = 0, cliente = null) {
