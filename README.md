@@ -26,6 +26,9 @@ minimarket-js
 └── frontend
     ├── src
     │   ├── components
+    │   │   ├── InventoryList.js
+    │   │   ├── SalesList.js
+    │   │   └── ProductCard.js
     │   ├── pages
     │   │   ├── Dashboard.js
     │   │   ├── Inventory.js
@@ -35,6 +38,9 @@ minimarket-js
     │   ├── services
     │   │   └── api.js
     │   └── App.js
+    ├── public
+    │   ├── index.html
+    │   └── styles.css
     └── package.json
 ```
 
@@ -44,6 +50,7 @@ minimarket-js
 - **Sales Processing**: Create and retrieve sales records.
 - **Dashboard**: View key metrics and statistics.
 - **Responsive Design**: Modern and responsive UI using Material-UI.
+- **User Authentication**: Password handling for users.
 
 ## Installation
 
