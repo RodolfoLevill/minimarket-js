@@ -1,5 +1,5 @@
 class Producto {
-    constructor(id, nombre, descripcion, precio_base, stock, categoria, codigo_barras, imagen, unidad_de_medida, fecha_vencimiento = null, proveedor, numero_proveedor, descuento = 0, porcentaje_ganancia) {
+    constructor(id, nombre, descripcion, precio_base, stock, categoria, codigo_barras, imagen, unidad_de_medida, fecha_vencimiento = null, proveedor, numero_proveedor, porcentaje_ganancia) {
         if (precio_base < 0) throw new Error('El precio no puede ser negativo');
         if (stock < 0) throw new Error('El stock no puede ser negativo');
         this.id = id;
@@ -14,7 +14,6 @@ class Producto {
         this.fecha_vencimiento = fecha_vencimiento ? new Date(fecha_vencimiento) : null;
         this.proveedor = proveedor;
         this.numero_proveedor = numero_proveedor;
-        this.descuento = descuento;
         this.porcentaje_ganancia = porcentaje_ganancia || 0;
         this.fecha_ingreso = new Date();
         this.stockMinimo = 5; // Umbral de stock bajo
@@ -49,7 +48,6 @@ class Producto {
             Fecha de Ingreso: ${this.fecha_ingreso.toLocaleDateString()}
             Proveedor: ${this.proveedor}
             Número de Proveedor: ${this.numero_proveedor}
-            Descuento: ${this.descuento}
             Porcentaje de Ganancia: ${this.porcentaje_ganancia}
         `;
     }
@@ -61,13 +59,8 @@ class Producto {
     }
 
     obtenerPrecioFinal() {
-        // Si no hay descuento, usar directamente el precio base
-        const precioConDescuento = this.descuento ? 
-            this.precio_base * (1 - this.descuento / 100) : 
-            this.precio_base;
-        
-        const precioFinal = precioConDescuento * (1 + this.porcentaje_ganancia / 100);
-        return Math.round(precioFinal * 100) / 100;
+        const precioConGanancia = this.precio_base * (1 + this.porcentaje_ganancia / 100);
+        return Math.round(precioConGanancia * 100) / 100;
     }
 
     getDiasParaVencer() {
