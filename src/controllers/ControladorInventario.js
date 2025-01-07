@@ -24,6 +24,18 @@ class ControladorInventario {
     obtenerProductoPorId(itemId) {
         return this.servicioInventario.buscarProductoPorId(itemId);
     }
+
+    obtenerProductosConQR() {
+        return this.productos.filter(producto => producto.codigoQR);
+    }
+
+    buscarPorQR(codigoQR) {
+        return this.productos.find(producto => producto.codigoQR === codigoQR);
+    }
+
+    generarCodigoQR(producto) {
+        return `QR-${Date.now()}-${producto.nombre.replace(/\s/g, '')}`;
+    }
 }
 
 export default ControladorInventario;

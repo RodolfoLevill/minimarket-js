@@ -1,35 +1,27 @@
-import Inventario from '../models/Inventario.js';
-
 class ServicioInventario {
     constructor() {
         this.inventario = [];
-        this.lastId = 0;
+    }
+
+    obtenerInventario() {
+        return this.inventario || [];
     }
 
     agregarProductoAlInventario(producto) {
-        const nuevoProducto = { ...producto, id: ++this.lastId };
+        const nuevoProducto = {
+            ...producto,
+            id: producto.id
+        };
         this.inventario.push(nuevoProducto);
         return nuevoProducto;
     }
 
-    eliminarProductoDelInventario(productoId) {
-        this.inventario.removeItem(productoId);
+    eliminarProductoDelInventario(id) {
+        this.inventario = this.inventario.filter(item => item.id !== id);
     }
 
-    actualizarProductoEnInventario(productoActualizado) {
-        this.inventario.updateProduct(productoActualizado);
-    }
-
-    obtenerInventario() {
-        return this.inventario.getInventario();
-    }
-
-    buscarProductoPorId(productoId) {
-        return this.inventario.getProductById(productoId);
-    }
-
-    listarProductosPorCategoria(categoria) {
-        return this.inventario.getProductsByCategory(categoria);
+    obtenerProductosConQR() {
+        return this.inventario.filter(producto => producto.codigoQR) || [];
     }
 }
 

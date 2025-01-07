@@ -14,8 +14,10 @@ class Producto {
         fecha_ingreso = new Date(),
         proveedor,
         numero_proveedor,
-        porcentaje_ganancia
+        porcentaje_ganancia,
+        codigoQR // Add codigoQR field
     }) {
+        if (!nombre) throw new Error('El nombre es requerido');
         if (precio_base < 0) throw new Error('El precio no puede ser negativo');
         if (stock < 0) throw new Error('El stock no puede ser negativo');
         this.id = Producto.nextId++;
@@ -32,6 +34,7 @@ class Producto {
         this.numero_proveedor = numero_proveedor;
         this.porcentaje_ganancia = porcentaje_ganancia || 0;
         this.fecha_ingreso = fecha_ingreso;
+        this.codigoQR = codigoQR || `QR-${this.id}-${Date.now()}`; // Generate default QR code if not provided
         this.stockMinimo = 5; // Umbral de stock bajo
     }
 

@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import ControladorInventario from './controllers/ControladorInventario.js';
 import ServicioInventario from './services/ServicioInventario.js';
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(express.json());
 app.use(cors()); // Ensure CORS is enabled
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // Inicializar servicios y controladores
 const servicioInventario = new ServicioInventario();

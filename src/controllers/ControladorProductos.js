@@ -3,8 +3,16 @@ class ControladorProductos {
         this.productos = [];
     }
 
+    generarCodigoQR(producto) {
+        return `QR-${Date.now()}-${producto.nombre.replace(/\s/g, '')}`;
+    }
+
     agregarProducto(producto) {
+        if (!producto.codigo_barras) {
+            producto.codigoQR = this.generarCodigoQR(producto);
+        }
         this.productos.push(producto);
+        return producto;
     }
 
     eliminarProducto(productoId) {
@@ -13,6 +21,14 @@ class ControladorProductos {
 
     obtenerProductos() {
         return this.productos;
+    }
+
+    obtenerProductosConQR() {
+        return this.productos.filter(producto => producto.codigoQR);
+    }
+
+    buscarPorQR(codigoQR) {
+        return this.productos.find(producto => producto.codigoQR === codigoQR);
     }
 }
 
