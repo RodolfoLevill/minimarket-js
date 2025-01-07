@@ -1,8 +1,24 @@
 class Producto {
-    constructor(id, nombre, descripcion, precio_base, stock, categoria, codigo_barras, imagen, unidad_de_medida, fecha_vencimiento = null, proveedor, numero_proveedor, porcentaje_ganancia) {
+    static nextId = 1;
+
+    constructor({
+        nombre,
+        descripcion,
+        precio_base,
+        stock,
+        categoria,
+        codigo_barras,
+        imagen,
+        unidad_de_medida,
+        fecha_vencimiento,
+        fecha_ingreso = new Date(),
+        proveedor,
+        numero_proveedor,
+        porcentaje_ganancia
+    }) {
         if (precio_base < 0) throw new Error('El precio no puede ser negativo');
         if (stock < 0) throw new Error('El stock no puede ser negativo');
-        this.id = id;
+        this.id = Producto.nextId++;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio_base = precio_base;
@@ -15,7 +31,7 @@ class Producto {
         this.proveedor = proveedor;
         this.numero_proveedor = numero_proveedor;
         this.porcentaje_ganancia = porcentaje_ganancia || 0;
-        this.fecha_ingreso = new Date();
+        this.fecha_ingreso = fecha_ingreso;
         this.stockMinimo = 5; // Umbral de stock bajo
     }
 

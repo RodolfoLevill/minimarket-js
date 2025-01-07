@@ -2,11 +2,14 @@ import Inventario from '../models/Inventario.js';
 
 class ServicioInventario {
     constructor() {
-        this.inventario = new Inventario();
+        this.inventario = [];
+        this.lastId = 0;
     }
 
     agregarProductoAlInventario(producto) {
-        this.inventario.addItem(producto);
+        const nuevoProducto = { ...producto, id: ++this.lastId };
+        this.inventario.push(nuevoProducto);
+        return nuevoProducto;
     }
 
     eliminarProductoDelInventario(productoId) {
