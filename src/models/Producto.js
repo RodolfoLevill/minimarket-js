@@ -1,7 +1,6 @@
 class Producto {
-    static nextId = 1;
-
     constructor({
+        id,
         nombre,
         descripcion,
         precio_base,
@@ -20,7 +19,7 @@ class Producto {
         if (!nombre) throw new Error('El nombre es requerido');
         if (precio_base < 0) throw new Error('El precio no puede ser negativo');
         if (stock < 0) throw new Error('El stock no puede ser negativo');
-        this.id = Producto.nextId++;
+        this.id = id
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio_base = precio_base;
