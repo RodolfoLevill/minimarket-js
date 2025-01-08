@@ -52,7 +52,7 @@ app.delete('/api/inventario/:id', (req, res) => {
         controladorInventario.eliminarProducto(req.params.id);
         res.status(204).send();
     } catch (error) {
-        res.status(404).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 });
 
@@ -83,8 +83,8 @@ app.use((err, req, res, next) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
-    console.log(`Servidor minimarket corriendo en http://localhost:${PORT}`);
+app.listen(3001, () => {
+    console.log('Server is running on port 3001');
 });
 
 export default app;
