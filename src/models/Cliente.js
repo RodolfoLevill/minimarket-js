@@ -1,6 +1,7 @@
 class Cliente {
-    constructor(id, nombre, email, telefono, deuda = 0) {
+    constructor(id, rut, nombre, email, telefono, deuda = 0) {
         this.id = id;
+        this.rut = rut;
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
@@ -18,10 +19,11 @@ class Cliente {
     obtenerInformacion() {
         return {
             id: this.id,
+            rut: this.rut,
             nombre: this.nombre,
             email: this.email,
             telefono: this.telefono,
-            deuda: this.deuda
+            deuda: this.deuda,
         };
     }
 }
